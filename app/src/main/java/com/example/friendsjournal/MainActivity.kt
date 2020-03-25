@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private val newWordActivityRequestCode = 1
     private lateinit var wordViewModel: WordViewModel
-    //private val intervalPref: SharedPreferences = this.getSharedPreferences(PREFS_FILENAME, 0);
+    private val intervalPref: SharedPreferences = this.getSharedPreferences(PREFS_FILENAME, 0);
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
