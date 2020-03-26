@@ -44,7 +44,7 @@ class AlarmReceiver : BroadcastReceiver() {
         Log.d(LOG_TAG,"SetAlarm2  recentFriendName = $recentFriendName et context = $alarmContext")
         try {
             val beginAt  = SystemClock.elapsedRealtime() + 60 * 1000
-            val interval = 60 * 1000 * 60L
+            val interval = getInterval()
 
             alarmMgr = alarmContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarmIntent = Intent(alarmContext, AlarmReceiver::class.java).let { intent ->
@@ -105,4 +105,24 @@ class AlarmReceiver : BroadcastReceiver() {
             )
         }
     }
+
+    private fun getInterval(): Long {
+        var interval = 1000*60L //1min
+        try {
+            intervalNotifPref = alarmContext.getSharedPreferences(PREFS_FILENAME, 0);
+            interval = intervalNotifPref.getLong(PREFS_FILEVAL, 1000 * 60L)
+            Log.i(
+                LOG_TAG,
+                "getInterval with interval = $interval"
+            )
+        }catch (e: Exception){
+            Log.e(
+                LOG_TAG,
+                "getInterval exception with interval = $interval"
+            )
+        }
+        return interval
+    }
+
+
 }

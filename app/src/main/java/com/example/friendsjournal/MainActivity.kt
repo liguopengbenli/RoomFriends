@@ -16,12 +16,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 private const val LOG_TAG = "MainActivity"
 const val PREFS_FILENAME = "com.example.friendsjournal.interval.prefs"
 const val PREFS_FILEVAL = "interval.value"
+lateinit var  intervalNotifPref: SharedPreferences
 
 class MainActivity : AppCompatActivity() {
 
     private val newWordActivityRequestCode = 1
     private lateinit var wordViewModel: WordViewModel
-    private val intervalPref: SharedPreferences = this.getSharedPreferences(PREFS_FILENAME, 0);
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, NewWordActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
         }
+        selectInterval(60*60*1000)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -66,13 +67,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun selectInterval(value: Long) {
-        val editor = intervalPref!!.edit()
+    private fun selectInterval(value: Long) {
+        intervalNotifPref = this.getSharedPreferences(PREFS_FILENAME, 0);
+        val editor = intervalNotifPref!!.edit()
         editor.putLong(PREFS_FILEVAL, value)
-        editor.apply()
+        editor.commit()
     }
-
-    fun getInterval(): Long {
-        return intervalPref.getLong(PREFS_FILEVAL,60 * 1000 * 60L)
-    }*/
 }

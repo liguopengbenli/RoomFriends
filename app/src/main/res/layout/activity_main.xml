@@ -25,4 +25,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp" />
+
+    <EditText
+        android:id="@+id/interval_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_interval"
+        android:inputType="textAutoComplete"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="120dp"
+        />
+
+    <Button
+        android:id="@+id/button_save_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_save"
+        android:textColor="@color/buttonLabel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="70dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
