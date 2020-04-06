@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Friend::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Friend::class), version = 3, exportSchema = false)
 public  abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDao
@@ -25,9 +25,9 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
                     //Delete all content here.
                     //wordDao.deleteAll()
                     //Add sample words.
-                    var word = Friend("ZhangTuNan")
+                    var word = Friend("ZhangTuNan","Normal")
                     wordDao.insert(word)
-                    word = Friend("ZhaoYang")
+                    word = Friend("ZhaoYang", "Normal")
                     wordDao.insert(word)
                 }
             }
@@ -47,6 +47,7 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
                     WordRoomDatabase::class.java,
                     "word_database"
                 )
+                    .fallbackToDestructiveMigration()
                     .addCallback(WordDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
@@ -54,4 +55,5 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
             }
         }
     }
+
 }

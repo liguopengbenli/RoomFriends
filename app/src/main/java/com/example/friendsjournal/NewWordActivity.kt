@@ -23,8 +23,10 @@ class NewWordActivity : AppCompatActivity() {
             if (TextUtils.isEmpty(editWordView.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
-                val word = editWordView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, word)
+                val friendName = editWordView.text.toString()
+                val rank = "Normal"
+                replyIntent.putExtra(EXTRA_NAME, friendName)
+                replyIntent.putExtra(EXTRA_RANK, rank)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
@@ -32,6 +34,10 @@ class NewWordActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
+        const val EXTRA_NAME = "com.android.wordlistsql.friendname"
+        const val EXTRA_RANK = "com.android.wordlistsql.RANK"
+
     }
 }
+
+

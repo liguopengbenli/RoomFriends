@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface WordDao {
 
-    @Query("SELECT * from friends_table ORDER BY friend ASC")
+    @Query("SELECT * from friends_table ORDER BY friendName ASC")
     fun getAlphabetizedWords(): LiveData<List<Friend>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

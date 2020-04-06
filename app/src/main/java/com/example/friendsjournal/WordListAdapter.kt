@@ -25,7 +25,7 @@ class WordListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = words[position]
-        holder.wordItemView.text = current.friend
+        holder.wordItemView.text = current.friendName
     }
 
     internal fun setWords(words: List<Friend>) {
