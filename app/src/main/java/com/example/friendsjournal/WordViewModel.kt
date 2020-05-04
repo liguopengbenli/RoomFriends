@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.friendsjournal.menu.GoodFriends
 import kotlinx.coroutines.launch
 
 
@@ -12,12 +13,21 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: WordRepository
     // LiveData gives us updated words when they change.
-    val allWords: LiveData<List<Friend>>
+
+    val familyWords: LiveData<List<Friend>>
+    val bestFriendsWords: LiveData<List<Friend>>
+    val goodFriendsWords: LiveData<List<Friend>>
+    val normalFriendsWords: LiveData<List<Friend>>
+    val acquaintances: LiveData<List<Friend>>
 
     init {
         val wordsDao = WordRoomDatabase.getDatabase(application, viewModelScope).wordDao()
         repository = WordRepository(wordsDao)
-        allWords = repository.allWords
+        familyWords = repository.familyWords
+        bestFriendsWords = repository.bestFriendsWords
+        goodFriendsWords = repository.goodFriendsWords
+        normalFriendsWords = repository.normalFriendsWords
+        acquaintances = repository.acquaintancesWords
     }
 
     /**
@@ -30,6 +40,11 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
     fun insert(word: Friend) = viewModelScope.launch {
         repository.insert(word)
     }
+
+    fun update(name: String, newName: String, newRank : String) {
+        repository.update(name, newName, newRank)
+    }
+
 
 
 }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".NewWordActivity"></activity>
-        <activity android:name=".menu.BestFriends" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".menu.Family" />
+        <activity android:name=".menu.BestFriends" />
+        <activity android:name=".menu.GoodFriends" />
+        <activity android:name=".menu.NormalFriends" />
+        <activity android:name=".menu.Acquaintances" />
 
         <receiver
             android:name=".AlarmReceiver"

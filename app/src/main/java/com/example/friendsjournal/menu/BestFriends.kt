@@ -21,7 +21,7 @@ class BestFriends : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bestfriends)
+        setContentView(R.layout.activity_menu)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview1)
         val adapter = WordListAdapter(this)
@@ -30,7 +30,7 @@ class BestFriends : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         wordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
-        wordViewModel.allWords.observe(this, Observer { words ->
+        wordViewModel.bestFriendsWords.observe(this, Observer { words ->
             // Update the cached copy of the words in the adapter.
             words?.let {
                 adapter.setWords(it)

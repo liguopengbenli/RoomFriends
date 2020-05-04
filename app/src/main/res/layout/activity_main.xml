@@ -6,6 +6,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/button_Family"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Family"
+        android:text="@string/button_family"
+        android:textColor="@color/buttonLabel"
+        android:layout_margin="70dp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/button_BestFriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/BestFriends"
+        android:text="@string/button_best_friends"
+        android:textColor="@color/buttonLabel"
+        android:layout_margin="70dp"
+        app:layout_constraintTop_toTopOf="@id/button_Family"
+        />
+
+    <Button
+        android:id="@+id/button_GoodFriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/GoodFriends"
+        android:text="@string/button_good_friends"
+        android:textColor="@color/buttonLabel"
+        android:layout_margin="70dp"
+        app:layout_constraintTop_toTopOf="@id/button_BestFriends"
+        />
+
+    <Button
+        android:id="@+id/button_NormalFriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/NormalFriends"
+        android:text="@string/button_normal_friends"
+        android:textColor="@color/buttonLabel"
+        android:layout_margin="70dp"
+        app:layout_constraintTop_toTopOf="@id/button_GoodFriends"
+        />
+
+    <Button
+        android:id="@+id/button_Acquaintances"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Acquaintances"
+        android:text="@string/button_Acquaintances"
+        android:textColor="@color/buttonLabel"
+        android:layout_margin="70dp"
+        app:layout_constraintTop_toTopOf="@id/button_NormalFriends"
+        />
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

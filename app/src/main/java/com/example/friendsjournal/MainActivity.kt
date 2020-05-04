@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.friendsjournal.menu.BestFriends
+import com.example.friendsjournal.menu.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Integer.parseInt
@@ -33,12 +33,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        wordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
+        setupButtonMenu()
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val intent = Intent(this@MainActivity, BestFriends::class.java)
+            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
         }
+
         selectInterval(60*60*1000)
 
         val button = findViewById<Button>(R.id.button_save_notification)
@@ -60,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 val friendName = data.getStringExtra(NewWordActivity.EXTRA_NAME)
                 val rank = data?.getStringExtra(NewWordActivity.EXTRA_RANK)
                 val word = Friend(friendName,rank)
+                Log.d(LOG_TAG,"Add words with friendname = $friendName and  rank = $rank")
                 wordViewModel.insert(word)
             }
         }
@@ -95,5 +98,37 @@ class MainActivity : AppCompatActivity() {
         val editor = intervalNotifPref.edit()
         editor.putLong(PREFS_FILEVAL, value)
         editor.commit()
+    }
+
+    private fun setupButtonMenu(){
+        val fab1 = findViewById<Button>(R.id.button_Family)
+        fab1.setOnClickListener {
+            val intent = Intent(this@MainActivity, Family::class.java)
+            startActivity(intent)
+        }
+
+        val fab2 = findViewById<Button>(R.id.button_BestFriends)
+        fab2.setOnClickListener {
+            val intent = Intent(this@MainActivity, BestFriends::class.java)
+            startActivity(intent)
+        }
+
+        val fab3 = findViewById<Button>(R.id.button_GoodFriends)
+        fab3.setOnClickListener {
+            val intent = Intent(this@MainActivity, GoodFriends::class.java)
+            startActivity(intent)
+        }
+
+        val fab4 = findViewById<Button>(R.id.button_NormalFriends)
+        fab4.setOnClickListener {
+            val intent = Intent(this@MainActivity, NormalFriends::class.java)
+            startActivity(intent)
+        }
+
+        val fab5 = findViewById<Button>(R.id.button_Acquaintances)
+        fab5.setOnClickListener {
+            val intent = Intent(this@MainActivity, Acquaintances::class.java)
+            startActivity(intent)
+        }
     }
 }

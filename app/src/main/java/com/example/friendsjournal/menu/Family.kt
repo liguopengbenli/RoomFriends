@@ -15,7 +15,7 @@ import com.example.friendsjournal.WordViewModel
 private const val LOG_TAG = "Family"
 
 
-class Acquaintances : AppCompatActivity() {
+class Family : AppCompatActivity() {
 
     private lateinit var wordViewModel: WordViewModel
 
@@ -30,12 +30,12 @@ class Acquaintances : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         wordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
-        wordViewModel.acquaintances.observe(this, Observer { words ->
+        wordViewModel.familyWords.observe(this, Observer { words ->
             // Update the cached copy of the words in the adapter.
             words?.let {
-                adapter.setWords(it)
-                Log.d(LOG_TAG,"Set word UI = $it")
-            }
+                        adapter.setWords(it)
+                        Log.d(LOG_TAG,"Set word UI = $it")
+                }
         })
 
     }

@@ -25,9 +25,19 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
                     //Delete all content here.
                     //wordDao.deleteAll()
                     //Add sample words.
-                    var word = Friend("ZhangTuNan","Normal")
+                    var word = Friend("ZhangTuNan", Rank.BestFriends.toString())
                     wordDao.insert(word)
-                    word = Friend("ZhaoYang", "Normal")
+                    word = Friend("MUYE", Rank.BestFriends.toString())
+                    wordDao.insert(word)
+                    word = Friend("ZhaoYang", Rank.Family.toString())
+                    wordDao.insert(word)
+                    word = Friend("bob", Rank.GoodFriends.toString())
+                    wordDao.insert(word)
+                    word = Friend("WangYang", Rank.BestFriends.toString())
+                    wordDao.insert(word)
+                    word = Friend("ll", Rank.NormalFriends.toString())
+                    wordDao.insert(word)
+                    word = Friend("sorenza", Rank.Acquaintances.toString())
                     wordDao.insert(word)
                 }
             }

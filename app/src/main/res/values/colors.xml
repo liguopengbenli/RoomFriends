@@ -4,4 +4,11 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="buttonLabel">#d3d3d3</color>
+    <color name="BestFriends">#81EC05</color>
+    <color name="Family">#F31E9E</color>
+    <color name="GoodFriends">#15F0F8</color>
+    <color name="NormalFriends">#FFEB3B</color>
+    <color name="Acquaintances">#CAB606</color>
+
+
 </resources>

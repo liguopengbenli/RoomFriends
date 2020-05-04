@@ -6,4 +6,10 @@
     <string name="empty_not_saved">Word not saved because it is empty.</string>
     <string name="channel_name">remember</string>
     <string name="channel_description">remember to user</string>
+    <string name="button_best_friends">Best Friends</string>
+    <string name="button_family">Family</string>
+    <string name="button_good_friends">Good Friends</string>
+    <string name="button_Acquaintances">Acquaintances</string>
+    <string name="button_normal_friends">Normal Friends</string>
+
 </resources>
