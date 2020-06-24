@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/unitTitle"
+        style="@style/word_title"
+        android:hint="@string/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <EditText
+        android:id="@+id/phoneTitle"
+        style="@style/word_title"
+        android:hint="@string/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/unitTitle"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <EditText
+        android:id="@+id/addressTitle"
+        style="@style/word_title"
+        android:hint="@string/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phoneTitle"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <EditText
+        android:id="@+id/weChatTitle"
+        style="@style/word_title"
+        android:hint="@string/wechat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addressTitle"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <EditText
+        android:id="@+id/fbTitle"
+        style="@style/word_title"
+        android:hint="@string/fb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weChatTitle"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <EditText
+        android:id="@+id/birthdayTitle"
+        style="@style/word_title"
+        android:hint="birthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fbTitle"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <EditText
+        android:id="@+id/noteTitle"
+        style="@style/word_title"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:minLines="1"
+        android:gravity="top|left"
+        android:maxLines="3"
+        android:hint="@string/note"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@id/birthdayTitle"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light" />
+
+    <Spinner
+        android:id="@+id/rankSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_below="@id/noteTitle"
+        />
+
+    <Button
+        android:id="@+id/button_save_unit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_save"
+        android:textColor="@color/buttonLabel" />
+
+
+</RelativeLayout>

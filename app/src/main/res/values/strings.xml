@@ -11,5 +11,12 @@
     <string name="button_good_friends">Good Friends</string>
     <string name="button_Acquaintances">Acquaintances</string>
     <string name="button_normal_friends">Normal Friends</string>
+    <string name="unknown">Unknown</string>
+    <string name="address">address</string>
+    <string name="phone">phone</string>
+    <string name="name">name</string>
+    <string name="wechat">wechat</string>
+    <string name="fb">FB</string>
+    <string name="note">note</string>
 
 </resources>

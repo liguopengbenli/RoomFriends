@@ -35,7 +35,6 @@ class NewWordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         val button = findViewById<Button>(R.id.button_save)
 
         val dropdown: Spinner = findViewById(R.id.spinner_rank)
-
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
         dropdown.adapter = adapter
         dropdown.setOnItemSelectedListener(this)

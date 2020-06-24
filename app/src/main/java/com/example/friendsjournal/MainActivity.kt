@@ -3,26 +3,23 @@ package com.example.friendsjournal
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.friendsjournal.menu.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Integer.parseInt
-import java.lang.Long.parseLong
 
 private const val LOG_TAG = "MainActivity"
 const val PREFS_FILENAME = "com.example.friendsjournal.interval.prefs"
 const val PREFS_FILEVAL = "interval.value"
 lateinit var  intervalNotifPref: SharedPreferences
+val dbName = "friend_database"
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,6 +49,8 @@ class MainActivity : AppCompatActivity() {
                 selectInterval(getInterval())
             }
         }
+
+        getDBPath()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -62,11 +61,10 @@ class MainActivity : AppCompatActivity() {
                 val friendName = data.getStringExtra(NewWordActivity.EXTRA_NAME)
                 val rank = data?.getStringExtra(NewWordActivity.EXTRA_RANK)
                 val word = Friend(friendName,rank)
-                Log.d(LOG_TAG,"Add words with friendname = $friendName and  rank = $rank")
+                Log.d(LOG_TAG,"Add words with friendname = $friendName and  rank = $rank phone = ${word.phoneNumber}")
                 wordViewModel.insert(word)
             }
         }
-
         else {
             Toast.makeText(
                 applicationContext,
@@ -130,5 +128,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Acquaintances::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun getDBPath(){
+        val currentDBPath = getDatabasePath(dbName).absolutePath
+        Log.d(LOG_TAG,"we get datapath = $currentDBPath")
     }
 }

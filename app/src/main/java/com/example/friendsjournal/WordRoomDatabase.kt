@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Friend::class), version = 3, exportSchema = false)
+@Database(entities = arrayOf(Friend::class), version = 7, exportSchema = false)
 public  abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDao
@@ -25,9 +25,9 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
                     //Delete all content here.
                     //wordDao.deleteAll()
                     //Add sample words.
-                    var word = Friend("ZhangTuNan", Rank.BestFriends.toString())
-                    wordDao.insert(word)
-                    word = Friend("MUYE", Rank.BestFriends.toString())
+                   // var word = Friend("ZhangTuNan", Rank.BestFriends.toString())
+                   // wordDao.insert(word)
+                   /* word = Friend("MUYE", Rank.BestFriends.toString())
                     wordDao.insert(word)
                     word = Friend("ZhaoYang", Rank.Family.toString())
                     wordDao.insert(word)
@@ -38,7 +38,7 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
                     word = Friend("ll", Rank.NormalFriends.toString())
                     wordDao.insert(word)
                     word = Friend("sorenza", Rank.Acquaintances.toString())
-                    wordDao.insert(word)
+                    wordDao.insert(word)*/
                 }
             }
         }
@@ -55,7 +55,7 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WordRoomDatabase::class.java,
-                    "word_database"
+                    dbName
                 )
                     .fallbackToDestructiveMigration()
                     .addCallback(WordDatabaseCallback(scope))
@@ -65,5 +65,28 @@ public  abstract class WordRoomDatabase : RoomDatabase() {
             }
         }
     }
+
+   /* companion object {
+        @Volatile
+        private var INSTANCE: WordRoomDatabase? = null
+        fun getDatabase(
+            context: Context,
+            scope: CoroutineScope
+        ): WordRoomDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    WordRoomDatabase::class.java,
+                    dbName
+                )
+                    .createFromAsset("database/friend_database")
+                    .fallbackToDestructiveMigration()
+                    .addCallback(WordDatabaseCallback(scope))
+                    .build()
+                INSTANCE = instance
+                return instance
+            }
+        }
+    }*/
 
 }

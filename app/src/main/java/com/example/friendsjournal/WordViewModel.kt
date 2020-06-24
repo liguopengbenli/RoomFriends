@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.friendsjournal.menu.GoodFriends
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class WordViewModel(application: Application) : AndroidViewModel(application) {
@@ -41,8 +42,25 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         repository.insert(word)
     }
 
-    fun update(name: String, newName: String, newRank : String) {
-        repository.update(name, newName, newRank)
+    fun updateName(name: String, newName: String) = viewModelScope.launch  {
+        repository.updateName(name, newName)
+    }
+
+    fun updateContact(name: String, newPhone: String, newAddress: String, newWechat: String, newFB: String) = viewModelScope.launch  {
+        repository.updateContact(name, newPhone, newAddress, newWechat, newFB)
+    }
+
+    fun updateInfo(name: String, newBirthday: String, newNote: String) = viewModelScope.launch  {
+        repository.updateInfo(name, newBirthday, newNote)
+    }
+
+    fun updateRank(name: String, newRank: String)= viewModelScope.launch  {
+        repository.updateRank(name, newRank)
+    }
+
+
+    fun get(name:String): Friend  = runBlocking {
+         repository.get(name)
     }
 
 

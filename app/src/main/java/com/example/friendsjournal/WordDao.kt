@@ -28,12 +28,24 @@ interface WordDao {
     @Query("SELECT * from friends_table WHERE rank='Acquaintances' ORDER BY friendName ASC ")
     fun getAcquaintancesWords(): LiveData<List<Friend>>
 
+    @Query("SELECT * from friends_table WHERE friendName= :name")
+    suspend fun getWord(name:String): Friend
+
     //-------------------------update data---------------------------------------//
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(friend: Friend)
 
-    @Query("UPDATE friends_table SET friendName = :newName, rank = :newRank WHERE friendName = :name")
-    fun updateFriend(name: String, newName: String, newRank: String)
+    @Query("UPDATE friends_table SET friendName = :newName WHERE friendName = :name")
+    suspend fun updateName(name: String, newName: String)
+
+    @Query("UPDATE friends_table SET phoneNumber = :newPhone, address = :newAddress, weChat = :newWechat, fb = :newFB WHERE friendName = :name")
+    suspend fun updateContact(name: String, newPhone: String, newAddress: String, newWechat: String, newFB: String)
+
+    @Query("UPDATE friends_table SET birthday = :newBirthday, note = :newNote WHERE friendName = :name")
+    suspend fun updateInfo(name: String, newBirthday: String, newNote: String)
+
+    @Query("UPDATE friends_table SET rank = :newRank WHERE friendName = :name")
+    suspend fun updateRank(name: String, newRank: String)
 
     @Query("DELETE FROM friends_table")
     suspend fun deleteAll()
