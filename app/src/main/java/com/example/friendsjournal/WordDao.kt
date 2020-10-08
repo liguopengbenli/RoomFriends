@@ -50,5 +50,8 @@ interface WordDao {
     @Query("DELETE FROM friends_table")
     suspend fun deleteAll()
 
+    @Query("DELETE FROM friends_table WHERE friendName = :name")
+    suspend fun deleteByName(name: String)
+
     // getFamilyWords
 }

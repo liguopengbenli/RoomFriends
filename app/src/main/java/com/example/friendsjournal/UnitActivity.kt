@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -26,7 +27,9 @@ class UnitActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         rank = intent.getStringExtra(RANK)
         mapRankColor(rank)
 
-        val button = findViewById<Button>(R.id.button_save_unit)
+        val buttonSave = findViewById<Button>(R.id.button_save_unit)
+        val buttonDelete = findViewById<Button>(R.id.button_delete_unit)
+
         val editWordTitle: EditText = findViewById(R.id.unitTitle)
 
         val dropdown: Spinner = findViewById(R.id.rankSpinner)
@@ -35,20 +38,46 @@ class UnitActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         dropdown.onItemSelectedListener = this
 
 
-        button.setOnClickListener{
-            if (!TextUtils.isEmpty(editWordTitle.text)) {
-                val newFriendName = editWordTitle.text.toString()
-                val newPhone = phoneTitle.text.toString()
-                val newAddress = addressTitle.text.toString()
-                val newWeChat = weChatTitle.text.toString()
-                val newFB = fbTitle.text.toString()
-                val newBirthday = birthdayTitle.text.toString()
-                val newNote = noteTitle.text.toString()
+        buttonSave.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("warning")
+            builder.setMessage("Do you want to save the modification?")
+            builder.setPositiveButton("Yes") { dialog, which ->
+                Toast.makeText(applicationContext, "Yes", Toast.LENGTH_SHORT).show()
+                if (!TextUtils.isEmpty(editWordTitle.text)) {
+                    val newFriendName = editWordTitle.text.toString()
+                    val newPhone = phoneTitle.text.toString()
+                    val newAddress = addressTitle.text.toString()
+                    val newWeChat = weChatTitle.text.toString()
+                    val newFB = fbTitle.text.toString()
+                    val newBirthday = birthdayTitle.text.toString()
+                    val newNote = noteTitle.text.toString()
 
-                wordViewModel.updateName(name, newFriendName)
-                wordViewModel.updateContact(name, newPhone, newAddress, newWeChat, newFB)
-                wordViewModel.updateInfo(name, newBirthday, newNote)
+                    wordViewModel.updateName(name, newFriendName)
+                    wordViewModel.updateContact(name, newPhone, newAddress, newWeChat, newFB)
+                    wordViewModel.updateInfo(name, newBirthday, newNote)
+                }
             }
+            builder.setNegativeButton("No") { dialog, which ->
+                Toast.makeText(applicationContext, "No", Toast.LENGTH_SHORT).show()
+            }
+            builder.show()
+        }
+
+        buttonDelete.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("warning")
+            builder.setMessage("Are you sure to delete this contact?")
+            builder.setPositiveButton("Yes") { dialog, which ->
+                Toast.makeText(applicationContext, "Yes", Toast.LENGTH_SHORT).show()
+                wordViewModel.deleteByName(name)
+
+            }
+            builder.setNegativeButton("No") { dialog, which ->
+                Toast.makeText(applicationContext, "No", Toast.LENGTH_SHORT).show()
+            }
+            builder.show()
+
         }
     }
 

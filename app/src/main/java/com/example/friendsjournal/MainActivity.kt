@@ -1,6 +1,7 @@
 package com.example.friendsjournal
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.friendsjournal.menu.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 import java.lang.Integer.parseInt
 
 private const val LOG_TAG = "MainActivity"
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         getDBPath()
+        checkIfDBExists(this, dbName)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -134,4 +137,25 @@ class MainActivity : AppCompatActivity() {
         val currentDBPath = getDatabasePath(dbName).absolutePath
         Log.d(LOG_TAG,"we get datapath = $currentDBPath")
     }
+
+    val DBPath = "/data/user/0/com.example.friendsjournal/lig/friend_database"
+
+
+
+    private fun checkIfDBExists(
+        context: Context,
+        databaseName: String
+    ): Boolean {
+        val dbFile = File(DBPath)
+        if (dbFile.exists()) {
+            Log.d(LOG_TAG,"we get DBPath = $DBPath")
+            return true
+        }
+        //if (!dbfile.parentFile.exists()) {
+        //  dbfile.parentFile.mkdirs()
+        //}
+        Log.d(LOG_TAG,"we don't get DBPath = $DBPath")
+        return false
+    }
+
 }

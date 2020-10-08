@@ -18,5 +18,6 @@
     <string name="wechat">wechat</string>
     <string name="fb">FB</string>
     <string name="note">note</string>
+    <string name="button_delete">Delete</string>
 
 </resources>

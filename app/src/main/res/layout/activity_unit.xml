@@ -87,12 +87,24 @@
 
     <Button
         android:id="@+id/button_save_unit"
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_margin="70dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
         android:background="@color/colorPrimary"
         android:text="@string/button_save"
+        android:textColor="@color/buttonLabel" />
+
+    <Button
+        android:id="@+id/button_delete_unit"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:text="@string/button_delete"
         android:textColor="@color/buttonLabel" />
 
 

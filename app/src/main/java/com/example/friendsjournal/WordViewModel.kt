@@ -63,6 +63,10 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
          repository.get(name)
     }
 
+    fun deleteByName(name:String) = runBlocking {
+        repository.deleteUnit(name)
+    }
+
 
 
 }

@@ -39,9 +39,12 @@ class WordRepository(private val wordDao: WordDao) {
         wordDao.updateRank(name, newRank)
     }
 
-
     suspend fun get(name: String): Friend{
         return wordDao.getWord(name)
+    }
+
+    suspend fun deleteUnit(name: String){
+        return wordDao.deleteByName(name)
     }
 
 
